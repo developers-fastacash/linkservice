@@ -13,9 +13,11 @@ import org.junit.Test;
 import com.fastacash.AbstractHibernateTest;
 import com.fastacash.dao.LinkDao;
 import com.fastacash.entity.Link;
+import com.fastacash.entity.Link.State;
 import com.fastacash.entity.Wallet;
 import com.fastacash.service.LinkService;
 import com.fastacash.utils.CommonUtils;
+import com.fastacash.utils.LinkUtils;
 import com.fastacash.utils.WalletUtils;
 
 public class LinkServicesTest extends AbstractHibernateTest {
@@ -39,5 +41,27 @@ public class LinkServicesTest extends AbstractHibernateTest {
 		assertEquals(dbLink.getState(), link.getState());
 		assertEquals(dbLink.getId(), link.getId());
 		assertEquals(dbLink.getAmount(), link.getAmount());
+	}
+	
+	public void testAcceptLinkService() {
+		Link link = LinkUtils.createRandomLink();
+		LinkUtils.save(link);
+		Boolean state = linkService.accept(link.getSecureHash());
+		
+		assertTrue(state);
+		Link dbLink = linkDao.getLinkById(link.getId());
+		assertEquals(dbLink.getState(), State.ACCEPTED);
+	}
+	
+	public void testAcceptFailureInLinkService() {
+		Link link = LinkUtils.createRandomLink();
+		link.setAmount(500);
+		LinkUtils.save(link);
+		
+		Boolean state = linkService.accept(link.getSecureHash());
+		
+		assertTrue(state == false);
+		Link dbLink = linkDao.getLinkById(link.getId());
+		assertEquals(dbLink.getState(), State.PENDING);
 	}
 }
