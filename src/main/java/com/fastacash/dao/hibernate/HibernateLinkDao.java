@@ -18,6 +18,10 @@ public class HibernateLinkDao extends HibernateDaoSupport implements LinkDao {
 		getHibernateTemplate().save(link);
 	}
 	
+	public void update(Link link) {
+		getHibernateTemplate().update(link);
+	}
+	
 	public Long count() {
 		Criteria cr = getSession().createCriteria(Link.class);
 		cr.setProjection(Projections.rowCount());

@@ -43,6 +43,7 @@ public class LinkServicesTest extends AbstractHibernateTest {
 		assertEquals(dbLink.getAmount(), link.getAmount());
 	}
 	
+	@Test
 	public void testAcceptLinkService() {
 		Link link = LinkUtils.createRandomLink();
 		LinkUtils.save(link);
@@ -53,6 +54,7 @@ public class LinkServicesTest extends AbstractHibernateTest {
 		assertEquals(dbLink.getState(), State.ACCEPTED);
 	}
 	
+	@Test
 	public void testAcceptFailureInLinkService() {
 		Link link = LinkUtils.createRandomLink();
 		link.setAmount(500);

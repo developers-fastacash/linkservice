@@ -32,7 +32,7 @@ public class LinkServiceImpl implements LinkService {
 		Link link = linkDao.getLinkBySecureHash(secureHash);
 		if (link.getAmount() < 500) {
 			link.setState(State.ACCEPTED);
-			linkDao.save(link);
+			linkDao.update(link);
 			return true;
 		}
 		return false;

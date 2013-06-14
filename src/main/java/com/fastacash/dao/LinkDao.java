@@ -5,6 +5,8 @@ import com.fastacash.entity.Link;
 public interface LinkDao {
 
 	void save(Link link);
+	
+	void update(Link link);
 
 	Long count();
 

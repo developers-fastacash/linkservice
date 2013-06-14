@@ -9,6 +9,7 @@ import com.fastacash.AbstractHibernateTest;
 import com.fastacash.dao.LinkDao;
 import com.fastacash.dao.WalletDao;
 import com.fastacash.entity.Link;
+import com.fastacash.entity.Link.State;
 import com.fastacash.utils.LinkUtils;
 
 public class LinkDaoHibernateTest extends AbstractHibernateTest {
@@ -64,5 +65,18 @@ public class LinkDaoHibernateTest extends AbstractHibernateTest {
 		assertEquals(dbLink.getState(), link.getState());
 		assertEquals(dbLink.getId(), link.getId());
 		assertEquals(dbLink.getAmount(), link.getAmount());
+	}
+	
+	@Test
+	public void LinkTestUpdateLink() {
+		Link link = LinkUtils.createRandomLink();
+		linkDao.save(link);
+		Long id = link.getId();
+		
+		link.setState(State.ACCEPTED);
+		linkDao.update(link);
+		
+		Link dbLink = linkDao.getLinkById(id);
+		assertEquals(dbLink.getState(), State.ACCEPTED);
 	}
 }
