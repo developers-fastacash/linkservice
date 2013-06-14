@@ -8,4 +8,5 @@ public interface WalletDao {
 
 	Long count();
 	
+	Wallet getWalletById(Long id);
 }

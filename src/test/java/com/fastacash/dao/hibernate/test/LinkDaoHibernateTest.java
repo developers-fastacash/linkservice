@@ -26,7 +26,7 @@ public class LinkDaoHibernateTest extends AbstractHibernateTest {
 		Link link = LinkUtils.createRandomLink();
 		linkDao.save(link);
 
-		Link dbLink = linkDao.getLinkBySecureHash(link.getSecureHash());
+		Link dbLink = linkDao.getLinkById(link.getId());
 		assertEquals(dbLink.getState(), link.getState());
 		assertEquals(dbLink.getId(), link.getId());
 		assertEquals(dbLink.getAmount(), link.getAmount());

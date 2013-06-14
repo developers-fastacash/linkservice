@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+
 public class AbstractHibernateTest {
 
 	protected static ApplicationContext appContext = null;

@@ -11,7 +11,9 @@ import org.junit.Test;
 import com.fastacash.AbstractHibernateTest;
 import com.fastacash.dao.LinkDao;
 import com.fastacash.dao.WalletDao;
+import com.fastacash.entity.Link;
 import com.fastacash.entity.Wallet;
+import com.fastacash.utils.LinkUtils;
 import com.fastacash.utils.WalletUtils;
 
 public class WalletDaoHibernateTest extends AbstractHibernateTest {
@@ -32,5 +34,15 @@ public class WalletDaoHibernateTest extends AbstractHibernateTest {
 		walletDao.save(wallet);
 		
 		assertEquals(walletDao.count(), (Long)(count + 1));
+	}
+	
+	@Test
+	public void WalletTestGetWalletById() {
+		Wallet wallet = WalletUtils.createRandomWallet();
+		
+		walletDao.save(wallet);
+
+		Wallet dbWallet = walletDao.getWalletById(wallet.getId());
+		assertTrue(dbWallet != null);
 	}
 }

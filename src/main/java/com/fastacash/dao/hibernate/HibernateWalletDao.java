@@ -29,4 +29,9 @@ public class HibernateWalletDao  extends HibernateDaoSupport implements WalletDa
 		return (long) 0;
 	}
 
+	public Wallet getWalletById(Long id) {
+		Wallet wallet = (Wallet) getSession().get(Wallet.class, id);
+		return wallet;
+	}
+
 }
