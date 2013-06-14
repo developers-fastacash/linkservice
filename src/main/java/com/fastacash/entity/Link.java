@@ -47,6 +47,7 @@ public class Link {
 		this.currency = currency;
 		this.wallet_source = wallet_source;
 		this.wallet_dest = wallet_dest;
+		this.state = State.PENDING;
 	}
 
 	public Link() {
@@ -112,6 +113,7 @@ public class Link {
 		this.currency = currency;
 	}
 
+	@Enumerated(EnumType.STRING)
 	public State getState() {
 		return state;
 	}

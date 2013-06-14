@@ -2,13 +2,16 @@ package com.fastacash.dao.hibernate;
 
 import java.util.List;
 
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import com.fastacash.dao.WalletDao;
 import com.fastacash.entity.Wallet;
 
+@Repository("WalletDao")
 public class HibernateWalletDao  extends HibernateDaoSupport implements WalletDao {
 
 	public void save(Wallet wallet) {
