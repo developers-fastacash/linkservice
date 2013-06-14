@@ -18,7 +18,7 @@ public class AbstractHibernateTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		appContext = new FileSystemXmlApplicationContext("/src/test/resources/applicationContext.xml");
+		appContext = new FileSystemXmlApplicationContext("/src/main/webapp/WEB-INF/applicationContext.xml");
 	}
 
 	@AfterClass
