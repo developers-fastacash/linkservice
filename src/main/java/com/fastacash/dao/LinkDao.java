@@ -4,9 +4,9 @@ import com.fastacash.entity.Link;
 
 public interface LinkDao {
 
-	Long save(Link link);
+	void save(Link link);
 
-	int count();
+	Long count();
 
 	Link getLinkBySecureHash(String secureHash);
 

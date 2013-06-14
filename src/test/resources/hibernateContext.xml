@@ -15,6 +15,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.fastacash.entity.Link</value>
+				<value>com.fastacash.entity.Wallet</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

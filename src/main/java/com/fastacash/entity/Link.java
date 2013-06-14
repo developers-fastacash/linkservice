@@ -112,8 +112,6 @@ public class Link {
 		this.currency = currency;
 	}
 
-	@Column(columnDefinition = "enum('DUMMY')")
-	@Enumerated(EnumType.STRING)
 	public State getState() {
 		return state;
 	}
